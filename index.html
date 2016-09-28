@@ -1,7 +1,7 @@
 <html>
 <!-- The license of this page is Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0) -->
 <head>
-  <title>Flukybot</title>
+  <title>JsBot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style type="text/css">body{margin:40px auto;max-width:650px;line-height:1.4;font-size:16px;color:#444;padding:0 10px}h1,h2,h3{font-family: sans-serif; line-height:1.2}</style>
 </head>
@@ -90,13 +90,11 @@ function handleUpdate(update) {
 function handleMessage(message) {
   if (message.text) {
     log(message.from.id + ": " + message.text);
-    if (message.text == "/help") {
+    if (message.text == "/start") {
       call("sendMessage", {
         chat_id: message.chat.id,
-        text: "I'm a bot temporarily running locally in a browser. You can use the following commands:\n" +
-              "/help - Show instructions\n" +
+        text: "I'm a simple js bot. You can use the following commands:\n" +
               "/keyboard - Show a simple keyboard\n" +
-              "/hidekeyboard - Hide the keyboard\n" +
               "/inlinekeyboard - Show an inline keyboard"
       });
     } else if (message.text == "/keyboard") {
@@ -105,7 +103,8 @@ function handleMessage(message) {
         text: "Please select a command",
         reply_markup: {
           keyboard: [
-            [{text: "Left"}, {text: "Right"}],
+            [{text: "/inlinekeyboard"}]
+            [{text: "/cloudids"}, {text: "/developer"}],
             [{text: "/hidekeyboard"}]
           ]
         }
@@ -121,10 +120,47 @@ function handleMessage(message) {
     } else if (message.text == "/inlinekeyboard") {
       call("sendMessage", {
         chat_id: message.chat.id,
-        text: "This message has an inline keyboard",
+        text: "Select what you want∶",
         reply_markup: {
           inline_keyboard: [
+            [{text: "Telegram", url: "https://telegram.me"}],
+            [{text: "Bing", url: "https://Bing.com"}],
+            [{text: "Twitter", url: "https://Twitter.com"}],
+            [{text: "Yahoo", url: "https://yahoo.com"}],
             [{text: "Google", url: "https://google.com"}],
+            [{text: "Instagram", url: "https://instagram.com"}],
+            [{text: "Github", url: "https://github.com"}],
+            [{text: "Facebook", url: "https://facebook.com"}],
+            [{text: "Hide", callback_data: "HIDE"}]
+          ]
+        }
+    });
+    } else if (message.text == "/cloudids") {
+      call("sendMessage", {
+        chat_id: message.chat.id,
+        text: "Select what you want∶",
+        reply_markup: {
+          inline_keyboard: [
+            [{text: "C9", url: "https://C9.io"}],
+            [{text: "CodeAnywhere", url: "https://codeanywhere.com"}],
+            [{text: "Codenvy", url: "https://Codenvy.com"}],
+            [{text: "Suse", url: "https://suse.com"}],
+            [{text: "Hide", callback_data: "HIDE"}]
+          ]
+        }
+    });
+    } else if (message.text == "/developer") {
+      call("sendMessage", {
+        chat_id: message.chat.id,
+        text: "Select what you want∶",
+        reply_markup: {
+          inline_keyboard: [
+            [{text: "Telegram", url: "https://telegram.me/electrovirus"}],
+            [{text: "Channel", url: "https://telegram.me/ev_official"}],
+            [{text: "Contact bot", url: "https://telegram.me/ev_cnt_bot"}],
+            [{text: "Gmail", url: "e.electrovirus@gmail.com"}],
+            [{text: "Github", url: "https://github.com/electrovirus"}],
+            [{text: "Instagram", url: "https://instagram.com/electro._.virus"}],
             [{text: "Hide", callback_data: "HIDE"}]
           ]
         }
